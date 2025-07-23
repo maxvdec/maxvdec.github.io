@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+		<title>Max Van den Eynde</title>
+		
+		<link href="../_app/immutable/assets/0.C3ifSanf.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/4.AoNIkzPx.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.puF2ZPVm.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/jMi-y2F9.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BwNPOce6.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CYYSE3v0.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BzmWE9O2.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BamKKwQw.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CC1s_AVz.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.f3wxlJYS.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/kf1HVkiw.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DsnmJJEf.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_4j05pd1.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DbsaEroA.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.Buoaou_V.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.B7D8QGJL.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CQDWUwFX.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[--><!----><!----><div class="w-screen min-h-screen flex justify-center items-start pt-20"><div class="max-w-4xl mx-auto px-6"><nav class="mb-8"><a href="/writings" class="font-['Lora'] text-orange-500 hover:underline">← Back to Writings</a></nav> <article class="prose prose-lg max-w-none"><header class="mb-8"><h1 class="font-['Lora'] font-bold italic text-4xl mb-4">Shard. A next-gen shell.</h1> <!--[--><p class="font-['Lora'] text-gray-600">July 23, 2025</p><!--]--></header> <div class="font-['Lora'] leading-relaxed"><!----><p>Shard. The project I am going to be working on (and I expect to end once for all). I designed it first, to make sure the language and the shell didn’t lack any of the capabilities a modern shell needs. I’ll be writing it with Zig, but before begining to actually write it, I need to explain a bit of how the language works.</p> <h2>Functional Programming</h2> <p>Functional Programming is one of things I have always pursued but never acutally achieved. Thinking in functional programming is hard for me, since it requires thinking in a different way than we are teached since we begin programming. But I actually find it very sleek and powerful.</p> <p>Shard is based on Haskell’s syntax, with patters deriving from both Functional and Imperative Programming.</p> <h3>Functions</h3> <p>Here’s a simple add function definition in Shard:</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">addTwo x y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> y</span></span></code></pre><!----> <p>It looks a lot like Haskell. I also want to support static typing so that the language is safe to write. Here’s the function with that:</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">addTwo </span><span style="color:#F97583">:</span><span style="color:#79B8FF"> Int</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">Int</span><span style="color:#F97583"> -></span><span style="color:#79B8FF"> Int</span></span>
+<span class="line"><span style="color:#E1E4E8">addTwo x y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> y</span></span></code></pre><!----> <h3>Variables</h3> <p>Pardon me, Haskell, but in Shard, we’re not going to have purity and inmutability. Variables are mutable.</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#6A737D">-- Or if you are feeling like it</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">:</span><span style="color:#79B8FF"> Int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 3</span></span></code></pre><!----> <h3>Types</h3> <p>Types in Shard aren’t that compilcated, they are easy to follow and use:</p> <h4>Type Definitions</h4> <p>A Type in Shard, is some name that enclosures some functions and variables:</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#F97583"> Animal</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#E1E4E8">    name </span><span style="color:#F97583">:</span><span style="color:#F97583"> String</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Unnamed"</span><span style="color:#6A737D"> -- this is a variable, we can even give a default</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    say </span><span style="color:#F97583">:</span><span style="color:#F97583"> Nothing</span><span style="color:#F97583"> -></span><span style="color:#F97583"> String</span></span>
+<span class="line"><span style="color:#E1E4E8">    delete </span><span style="color:#F97583">:</span><span style="color:#F97583"> Nothing</span><span style="color:#F97583"> -|</span><span style="color:#6A737D"> -- '-|' meaning that it returns the same that it takes</span></span></code></pre><!----> <h4>Data Declarations</h4> <p>Instead, Data types are types that enclosure some tagged data.</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#F97583">data</span><span style="color:#F97583"> Token</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#79B8FF">    Comma</span><span style="color:#F97583"> |</span></span>
+<span class="line"><span style="color:#79B8FF">    OpenParenthesis</span><span style="color:#F97583"> |</span></span>
+<span class="line"><span style="color:#79B8FF">    CloseParenthesis</span><span style="color:#F97583"> |</span></span>
+<span class="line"><span style="color:#79B8FF">    Other</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">String</span><span style="color:#E1E4E8">)</span></span></code></pre><!----> <p>I plan to bring to the scripting langauge actual capabilities regarding abstraction. Types like this exist in the standard library:</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#E1E4E8"> array</span><span style="color:#F97583">&#x3C;&#x26;</span><span style="color:#E1E4E8">num</span><span style="color:#F97583">></span><span style="color:#F97583"> &#x26;</span><span style="color:#E1E4E8">list </span><span style="color:#F97583">=</span></span>
+<span class="line"><span style="color:#E1E4E8">    value </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (typeof list</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">enclosingType)[num] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> list</span></span></code></pre><!----> <p>What is basically defining is:</p> <ul><li>We have a type <code>array</code> which takes as template a expression (normally a number) like this: <code>array&lt;3></code></li> <li>Then, we have a <strong>comptime list</strong> as a submission to the initializer</li> <li>And that list gets passed to the inner value</li></ul> <h3>Threads</h3> <p>Fusion has an interesting approach to threads, since threads are named. Imagine this:</p> <ul><li>When we open a shell session, we get a screen like this:</li></ul> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span>~ [main] > _</span></span></code></pre><!----> <ul><li><p><strong><code>main</code></strong> is the thread we’re at in.</p></li> <li><p>By using some commands like <code>switch</code> or <code>spawn</code></p></li></ul> <hr/> <p>I hope I finish the project. I’ll try to write regularly every one or two weeks, which a devlog. I leave you with a script I made that showcases a bit about the language:</p> <!----><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> fusion </span><span style="color:#6A737D">-- just for scripting</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> thread </span><span style="color:#6A737D">-- also just for scripting. In repl, these will be imported</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> signals </span><span style="color:#6A737D">-- again</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> output_file </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "output.txt"</span></span>
+<span class="line"><span style="color:#E1E4E8">io</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">clearFile output_file </span><span style="color:#6A737D">-- You can do it with 'try' or with not, but the function is @throws</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cleanUp </span><span style="color:#F97583">=</span></span>
+<span class="line"><span style="color:#E1E4E8">    print </span><span style="color:#9ECBFF">"Cleaning up..."</span></span>
+<span class="line"><span style="color:#E1E4E8">    io</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">remove output_file</span></span>
+<span class="line"><span style="color:#E1E4E8">    exit </span><span style="color:#79B8FF">0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">defer cleanUp </span><span style="color:#6A737D">-- or 'onSignal signal.SIGINT cleanUp'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">backgroundTask </span><span style="color:#F97583">=</span></span>
+<span class="line"><span style="color:#E1E4E8">    for i </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> (range </span><span style="color:#79B8FF">1</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#E1E4E8">        print </span><span style="color:#9ECBFF">"Background $i"</span><span style="color:#E1E4E8"> to output_file </span><span style="color:#6A737D">-- You can use 'io.write', for demonstrating REPL purpose, here you can have it. 'to' is like a pipe</span></span>
+<span class="line"><span style="color:#E1E4E8">        wait </span><span style="color:#79B8FF">1</span></span>
+<span class="line"><span style="color:#E1E4E8">    end</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">spawn backgroundTask </span><span style="color:#F97583">:</span><span style="color:#E1E4E8">backgroundThread</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">while true </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#E1E4E8">    print </span><span style="color:#9ECBFF">"Enter something or enter 'exit'"</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> input </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> getInput</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> input </span><span style="color:#F97583">==</span><span style="color:#9ECBFF"> "exit"</span><span style="color:#F97583"> then</span></span>
+<span class="line"><span style="color:#E1E4E8">        print </span><span style="color:#9ECBFF">"Exiting..."</span></span>
+<span class="line"><span style="color:#E1E4E8">    end</span></span>
+<span class="line"><span style="color:#E1E4E8">    io</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">write output_file, </span><span style="color:#9ECBFF">"You said: $input"</span><span style="color:#6A737D"> -- Commas are optional when calling functions</span></span>
+<span class="line"><span style="color:#E1E4E8">end</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">print </span><span style="color:#9ECBFF">"Contents of $output_file:"</span></span>
+<span class="line"><span style="color:#E1E4E8">read output_file to print </span><span style="color:#6A737D">-- Or just 'read output_file'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">cleanUp</span></span></code></pre><!----><!----></div></article></div></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1lwhgnm = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.puF2ZPVm.js"),
+						import("../_app/immutable/entry/app.f3wxlJYS.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
