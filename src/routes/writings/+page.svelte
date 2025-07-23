@@ -11,10 +11,6 @@
 	export let data: PageData;
 </script>
 
-<svelte:head>
-	<title>Writings - Max Van den Eynde</title>
-</svelte:head>
-
 <div class="w-screen h-screen flex justify-center items-center flex-row">
 	<div class="pr-10 border-r-1 mr-10 h-[30rem] flex items-center justify-center flex-col space-y-3">
 		<a href="/" class="font-['Lora'] cursor-pointer">About</a>

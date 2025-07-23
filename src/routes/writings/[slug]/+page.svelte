@@ -8,10 +8,6 @@
 	export let data: PageData;
 </script>
 
-<svelte:head>
-	<title>{data.title} - Max Van den Eynde</title>
-</svelte:head>
-
 <div class="w-screen min-h-screen flex justify-center items-start pt-20">
 	<div class="max-w-4xl mx-auto px-6">
 		<nav class="mb-8">
