@@ -1,13 +1,12 @@
-module.exports = {
-	purge: [],
-	darkMode: false, // or 'media' or 'class'
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
-			serif: ['Lora']
+			fontFamily: {
+				serif: ['Lora', 'serif']
+			}
 		}
-	},
-	variants: {
-		extend: {}
 	},
 	plugins: []
 };
